@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { Admin } from './admin/admin.entity';
+import { ProductsModule } from './products/products.module';
+import { Product } from './products/product.entity';
 
 @Module({
   imports: [
@@ -19,13 +21,14 @@ import { Admin } from './admin/admin.entity';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD') || '',
         database: configService.get<string>('DB_NAME'),
-        entities: [Admin],
+        entities: [Admin, Product],
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
     AdminModule,
     AuthModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
