@@ -1,10 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum ProductCategory {
-  ELECTRONICS = 'Electronics',
-  CLOTHING = 'Clothing',
-  HOME_GARDEN = 'Home & Garden',
-  SPORTS = 'Sports',
+  CARE = 'Care',
+  FOOD = 'Food',
   OTHER = 'Other',
 }
 
