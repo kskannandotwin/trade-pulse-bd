@@ -1,5 +1,13 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
+export enum ProductCategory {
+  ELECTRONICS = 'Electronics',
+  CLOTHING = 'Clothing',
+  HOME_GARDEN = 'Home & Garden',
+  SPORTS = 'Sports',
+  OTHER = 'Other',
+}
+
 @Entity('products')
 export class Product {
   @PrimaryGeneratedColumn('uuid')
@@ -8,7 +16,11 @@ export class Product {
   @Column()
   name: string;
 
-  @Column()
+  @Column({
+    type: 'enum',
+    enum: ProductCategory,
+    default: ProductCategory.OTHER,
+  })
   category: string;
 
   @Column('decimal', { precision: 10, scale: 2 })
