@@ -14,6 +14,8 @@ import { CustomersModule } from './customers/customers.module';
 import { Customer } from './customers/customer.entity';
 import { OrdersModule } from './orders/orders.module';
 import { Order } from './orders/order.entity';
+import { RawMaterialsModule } from './raw-materials/raw-materials.module';
+import { RawMaterial } from './raw-materials/raw-material.entity';
 
 @Module({
   imports: [
@@ -27,7 +29,7 @@ import { Order } from './orders/order.entity';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD') || '',
         database: configService.get<string>('DB_NAME'),
-        entities: [Admin, Product, Sale, Customer, Order],
+        entities: [Admin, Product, Sale, Customer, Order, RawMaterial],
         synchronize: true,
       }),
       inject: [ConfigService],
@@ -38,6 +40,7 @@ import { Order } from './orders/order.entity';
     SalesModule,
     CustomersModule,
     OrdersModule,
+    RawMaterialsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

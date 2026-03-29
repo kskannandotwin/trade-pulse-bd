@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { RawMaterial } from '../raw-materials/raw-material.entity';
 
 export enum ProductCategory {
   CARE = 'Care',
@@ -26,4 +27,7 @@ export class Product {
 
   @Column('int')
   stock: number;
+
+  @OneToMany(() => RawMaterial, (rawMaterial) => rawMaterial.product)
+  rawMaterials: RawMaterial[];
 }
