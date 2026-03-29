@@ -16,7 +16,8 @@ import { OrdersModule } from './orders/orders.module';
 import { Order } from './orders/order.entity';
 import { RawMaterialsModule } from './raw-materials/raw-materials.module';
 import { RawMaterial } from './raw-materials/raw-material.entity';
-
+import { SellersModule } from './sellers/sellers.module';
+import { Seller } from './sellers/seller.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -29,7 +30,7 @@ import { RawMaterial } from './raw-materials/raw-material.entity';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD') || '',
         database: configService.get<string>('DB_NAME'),
-        entities: [Admin, Product, Sale, Customer, Order, RawMaterial],
+        entities: [Admin, Product, Sale, Customer, Order, RawMaterial, Seller],
         synchronize: true,
       }),
       inject: [ConfigService],
@@ -41,6 +42,7 @@ import { RawMaterial } from './raw-materials/raw-material.entity';
     CustomersModule,
     OrdersModule,
     RawMaterialsModule,
+    SellersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
